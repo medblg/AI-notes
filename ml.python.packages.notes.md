@@ -1,5 +1,6 @@
 python libraries for machine learning:
 ===
+
 https://www.upgrad.com/blog/top-python-libraries-for-machine-learning/
 
 
@@ -26,7 +27,7 @@ linear algebra, image optimization, integration interpolation, special functions
   - dimensionality reduction
   - model selection
   - preprocessing
-  
+
 # TensorFlow
 
 - by google
@@ -39,8 +40,8 @@ linear algebra, image optimization, integration interpolation, special functions
 - used for neural network and machine learning
 - has features to work with:
   - images, text images..
-  
-  
+
+
 # pandas
 
 - used for data analysis
@@ -48,9 +49,9 @@ linear algebra, image optimization, integration interpolation, special functions
 - main 2 types of data structures used :
   1. Series (1-dimensional)
   2. DataFrame (2-dimensional)
-  
+
 # matplotlib
 
 - is a data visualization library used for 2D plotting.
 - helps generate histograms, plots, error charts, scatter plots..
-- matlab-like interface 
+- matlab-like interface

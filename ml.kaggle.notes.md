@@ -6,7 +6,7 @@ Intro machine learning - kaggle
 - model ex -> decision tree -> basic building bloc
 - capturing data -> fitting or training the model.
   - data -> training data
-  
+
 - improving decision tree:
   - deeper trees -> trees with more factors
 
@@ -50,7 +50,7 @@ https://www.kaggle.com/learn/pandas
 - steps:
   - define -> what model, decision tree.. ?
   - fit -> capture patterns from provided data.
-  - predict 
+  - predict
   - evaluate -> determine how accurate the model's predictions are.
 - ex:
 ```
@@ -125,7 +125,7 @@ print(mean_absolute_error(val_y, val_predictions))
 
 ### experimenting with diff models
 
-- decision tree -> more options -> 
+- decision tree -> more options ->
 `https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html`
   - important option `tree's depth` -> how many splits before coming to a prediciton
 
@@ -150,13 +150,13 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
 	print("max leaf nodes: %d \t\t Mean absolute error: %d" %(max_leaf_nodes, my_mae))
 ```
 
-- **final model**: 
+- **final model**:
 ```
 final_model = DecisionTreeRegressor(max_leaf_nodes = 100, random_state=0)
 final_model.fit(X, y) ## with all the data
 ```
 
-#### takeaway: 
+#### takeaway:
 - models suffer from either:
   - `overfitting` -> capturing patterns that won't recur in the future -> less accurate predic
   - `underfitting` -> failing to capture relevant patterns, -> less predic
@@ -164,11 +164,11 @@ final_model.fit(X, y) ## with all the data
 - `validation data` -> not used in model training, it measures model's accuracy
   - lets try many candidate models -> keep the best
 
-- Decision tree -> 
+- Decision tree ->
   - lot of leaves -> overfit. -> few data in its leaf
   - with few leaves -> shallow tree -> perform poorly -> fails to capture distinctions in raw data.
-  
-6. Random Forests 
+
+6. Random Forests
 ---
 
 - using sophisticated ML algorithms
@@ -324,7 +324,7 @@ drop_X_valid = X_valid.select_dtypes(exclude=['object'])
 ```
 from sklearn.preprocessing import LabelEncoder
 
-# Make copy to avoid changing original data 
+# Make copy to avoid changing original data
 label_X_train = X_train.copy()
 label_X_valid = X_valid.copy()
 
@@ -335,7 +335,7 @@ for col in object_cols:
     label_X_valid[col] = label_encoder.transform(X_valid[col])
 ```
   3. one-hot-encoding -> create new columns indicating presence(absence) of each possible value in the orig data.
-  
+
 ```
 from sklearn.preprocessing import OneHotEncoder
 
@@ -356,7 +356,7 @@ num_X_valid = X_valid.drop(object_cols, axis=1)
 OH_X_train = pd.concat([num_X_train, OH_cols_train], axis=1)
 OH_X_valid = pd.concat([num_X_valid, OH_cols_valid], axis=1)
 ```  
-  
+
 
 #### Pipelines
 
@@ -367,11 +367,12 @@ OH_X_valid = pd.concat([num_X_valid, OH_cols_valid], axis=1)
   - fewer bugs
   - easier to productionize
   - more options for model validation
-  
+
 - step:
 `ColumnTransformer` -> to bundle diff preprocess steps
 
 - step1: define preprocessing steps
+
 ```
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -394,7 +395,9 @@ preprocessor = ColumnTransformer(
         ('cat', categorical_transformer, categorical_cols)
     ])
 ```
+
 - step2: define model
+
 ```
 from sklearn.ensemble import RandomForestRegressor
 
@@ -402,6 +405,7 @@ model = RandomForestRegressor(n_estimators=100, random_state=0)
 ```
 
 - step3: create and evaluate Pipeline
+
 ```
 from sklearn.metrics import mean_absolute_error
 
@@ -410,7 +414,7 @@ my_pipeline = Pipeline(steps=[('preprocessor', preprocessor),
                               ('model', model)
                              ])
 
-# Preprocessing of training data, fit model 
+# Preprocessing of training data, fit model
 my_pipeline.fit(X_train, y_train)
 
 # Preprocessing of validation data, get predictions
@@ -420,7 +424,7 @@ preds = my_pipeline.predict(X_valid)
 score = mean_absolute_error(y_valid, preds)
 ```
 
-#### cross-validation 
+#### cross-validation
 
 - for better measures of model's performance
 - the larger the validation set -> less randomness (aka noise)
@@ -429,7 +433,7 @@ score = mean_absolute_error(y_valid, preds)
   - run 1 experiment for each fold
   - use every fold set as a `holdout set`  (validation set)
 
-###### when use cross validation
+#### when use cross validation
 
 - for small datasets
 - for larger datasets -> single validation set is sufficient

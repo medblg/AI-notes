@@ -16,3 +16,4 @@ The idea here is to develop an AI ChatBot, connected with a predictive trained m
 ## Notes
 - DialogFlow was chosen for Implementing our ChatBot as DRY principle, and also to avoid processing hasle !
 - This will be updated as I go through AI :)
+- Notes aren't well structured, but yet well used !

@@ -1,7 +1,7 @@
 Machine Learning
-https://www.w3schools.com/python/python_ml_getting_started.asp
 ===
 
+https://www.w3schools.com/python/python_ml_getting_started.asp
 ML -> Analyzing data and predicting the outcome
 
 # data types:
@@ -14,7 +14,7 @@ ML -> Analyzing data and predicting the outcome
 
 # mean median mode: -> used in ML
 x -> a List (array)
-1. mean -> average value. 
+1. mean -> average value.
  - `numpy.mean(x)`
 
 2. median -> mid point value(value in middle after sorting all values).
@@ -32,7 +32,7 @@ x -> a List (array)
 
 ex:
 - speed = [86,87,88,86,87,85,86]
- - std devi -> 0.9 
+ - std devi -> 0.9
  - most values -> within range of 0.9 from mean -> 86.4
 
 - speed = [32,111,138,28,59,77,97]
@@ -41,18 +41,18 @@ ex:
 
 - std devia with numpy:
  - `import numpy -> numpy.std(x)`
- 
+
 # variance (sigma square): indicates how spread out values are.
 - std devia = square root of variance
  - `import numpy -> numpy.var(x)`
 
-# Percentiles 
+# Percentiles
 
 - number describes value that given percent of values are lower than.
  - `import numpy -> numpy.percentile(x, 75)`
   - what represents 75% percentile of x ar lower than.
 
-ex: 
+ex:
 - ages = [5,31,43,48,50,41,7,11,15,39,80,82,32,2,8,6,25,36,27,61,31]
 - 75. percentile -> is 43 => means 75% of people are 43 or younger.
 - age 90% are younger than => 61.0
@@ -60,10 +60,10 @@ ex:
 # data distribution
 
 - data sets are much bigger.
-- create big data sets for testing 
+- create big data sets for testing
  - exp : array of 250 random floats between 0 and 5
  - `import numpy -> numpy.random.uniform(0.0, 5.0, 250)`
- 
+
 # histogram -> data represents (occurences)
 
 - visualize data set -> draw histogram -> matplotlib
@@ -87,7 +87,7 @@ plt.show()
   - values -> concentrated around meanvalue, and rarely further away std dev.
 
 ```
-import numpy 
+import numpy
 import matplotlib.pyplot as plt
 
 x = numpy.random.normal(5.0, 1.0, 100000)
@@ -125,8 +125,8 @@ plt.show()
 
 - regression -> when find -> relationship betwn vrbles
 - ML -> relationship -> used to predict outcume of future events.
-- linear regre : 
- - uses relatshp btwn data-pts 
+- linear regre :
+ - uses relatshp btwn data-pts
  - draw straight line through all them.
  - `from scipy import stats`
  - `stats.linregress(x, y)`
@@ -143,7 +143,7 @@ slope, intercept, r, p, std_err = stats.linregress(x, y)
 def myfunc(x):
 	return slope * x + intercept
 
-# run each value of x array through funct	
+# run each value of x array through funct
 mymodel = list(map(myfunc, x))
 plt.scatter(x,y)
 plt.plot(x, mymodel)
@@ -167,7 +167,7 @@ slope, intercept, r, p, std_err = stats.linregress(x, y)
 print(r)
 ```
 - result r=-0.75-> there's relationship -> we can use linear regression future prediction
- 
+
 # predict future values
 
 - ex: predict speed of 10 years old car

@@ -1,11 +1,10 @@
 Flask and dialogflow -> chatbot python
-=== Important
-https://www.youtube.com/watch?v=ubub9Nz681s&list=PLrYq9TGMS8e8E4ZTjFKiwsy_EntyNbDEm
-https://github.com/AndroidArena/BestCovid19_bot-DialogFlow
-
-https://cloud.google.com/dialogflow/docs/basics
 ---
 
+- Refs
+  - https://www.youtube.com/watch?v=ubub9Nz681s&list=PLrYq9TGMS8e8E4ZTjFKiwsy_EntyNbDEm
+  - https://github.com/AndroidArena/BestCovid19_bot-DialogFlow
+  - https://cloud.google.com/dialogflow/docs/basics
 
 save user-bot conversation on database
 dialogflow-> will match text with intent -> logic
@@ -81,16 +80,17 @@ https://www.youtube.com/watch?v=8g3aVYPY7d4&list=PLJLSPq0cTRma_kxRrNSAxcQKUxARMf
 
 #### slot filling
 
-- gettin user's contact data
+- getting user's contact data
 
 
 ============
 ### entities
 
 - id ->
-
 RE2 (google regex)
 https://github.com/google/re2/wiki/Syntax
+
+```
 .
 [xyz]
 [^xyz]
@@ -104,42 +104,33 @@ x{n,m} -> repition
 x{n,} -> n or more
 x{n} -> exactly repeated x n times.
 x*? -> zero or more x
+```
 
 grouping :
+```
 (re) -> capturing group
-
 i -> case insensitive
-
 ^ -> beginning string
 $ 0> end text
-
-
 [\d]	digits (≡ \d)
 [^\d]	not digits (≡ \D)
 \d	digits (≡ [0-9])
 [[:digit:]]	digits (≡ [0-9])
-
-
-
+```
 
 https://cloud.google.com/dialogflow/docs/entities-overview
-===
+
 Entity type: Defines the type of information you want to extract from user input.
 
-
-
-
-
-
-
-======
 https://cloud.google.com/dialogflow/docs/integrations/telegram
 
-custom payload
+custom payload:
+```
 {
   "telegram": {
     "text": "You can read about *entities* [here](/docs/concept-entities).",
     "parse_mode": "Markdown"
   }
 }
+```
 https://core.telegram.org/bots/api#formatting-options

@@ -1,6 +1,8 @@
 TensorFlow notes
 ===
-### my references:
+
+Refs:
+---
 - https://www.tensorflow.org/tutorials/
 - https://www.youtube.com/watch?v=tPYj3fFJGjk
 - https://www.youtube.com/channel/UC0rqucBdTuFTjJiefW5t-IQ/playlists - tensorflow channel
@@ -9,14 +11,15 @@ TensorFlow notes
 - https://www.youtube.com/watch?v=KNAWp2S3w94
 
 - https://www.youtube.com/watch?v=KNAWp2S3w94&list=PLZKsYDC2S5rM6yKBs5ParXS6RWda6iAnK
----
+
+
 # instalation :
 `pip install tensorflow`
 - https://medium.com/@cran2367/install-and-setup-tensorflow-2-0-2c4914b9a265
 - install virtualenv
 `sudo pip3 install -U virtualenv`
 ## steps:
-1. create virt env : 
+1. create virt env :
 - virtualenv(  
   - isolated env for python projects
   - indep set of packages(dependencies)
@@ -24,7 +27,7 @@ TensorFlow notes
 )
 - instantiate virtual env:
 - `python3 -m venv --system-site-packages ./venv`
-- `virtualenv --system-site-packages -p python3 tf_2` 
+- `virtualenv --system-site-packages -p python3 tf_2`
   - `--system-site-packages` -> pjcts within virtenv (name tf_2)can access global site-packages
   - `-p python3 tf_2` -> set python3 as interpreter for our tf_2 virtualenv.
   - `tf_2` is created as physical dir at location of virtualenv.
@@ -54,18 +57,18 @@ python3 -c "import matplotlib.pyplot as plt; import tensorflow as tf; layers=tf.
 
 5. deactivate the virtualenv
 
-- before closing : `deactivate` 
+- before closing : `deactivate`
 
 
 # quick start
-- use keras : 
+- use keras :
   - build neural network classifies images
   - train neural netw
   - evaluate the accuracy of the model
 (
 - google colab notebook ? = https://colab.research.google.com/
 write and execute python in browser
- 
+
 https://colab.research.google.com/notebooks/markdown_guide.ipynb
 
 - https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)
@@ -98,10 +101,10 @@ model = tf.keras.models.Sequential([
 - `https://www.tensorflow.org/guide/keras/overview`
 - to build train models
 - tf.keras.version -> tf.keras might be diff keras from pypi
-- saving model's weigths -> 
+- saving model's weigths ->
   - tf.keras defaults to checkpoint format.
   - pass `save_format='h5'` -> to use hdf5 | filename ends with .h5
-  
+
 ## build simple model
 1. Sequential model:
 - Keras -> assemble layers to build models.
@@ -121,18 +124,18 @@ model.add(layers.Dense(64, activation='relu'))
 # add an output layer with 10 output units
 model.add(layers.Dense(10))
 ```
-2. configure layers 
+2. configure layers
 - many `tf.keras.layers`
 - common arguments:
   - **activation**: set activ functi. && by default no activation is set.
-  - **kernel_initializer** and **bias_initializer**: 
+  - **kernel_initializer** and **bias_initializer**:
     - creates layer's weights(kernel && bias)
     - `kernel` -> defaults -> `Glorot uniform`
     - `bias` -> defaults -> `zeros`
-  - **kernel_regularizer** and **bias_regularizer**: 
+  - **kernel_regularizer** and **bias_regularizer**:
     - applies layer's wigths
     - ex: L1 | L2 -> regularization. -> by default -> no regularization.
-    
+
 - instantiate `tf.keras.layers.Dense` layers:
   - relu layer:
 `layers.Dense(64, activation='relu')`
@@ -152,8 +155,8 @@ model.add(layers.Dense(10))
       - `tf.keras.optimizers.Adam` or `tf.keras.optimizers.SGD`
       - for use default parameters -> use `'adam'`, `'sgd'`
     - `loss` : func to minimize during optimization.
-      - common -> 
-        - `mse(mean square error)` 
+      - common ->
+        - `mse(mean square error)`
         - `categorical_crossentropy`
         - `binary_crossentropy`
     - `metrics` -> monitor training.
@@ -205,5 +208,3 @@ model.fit(data, labels, epochs=10, batch_size=32,
 
 # lexique machine learning:
 https://developers.google.com/machine-learning/glossary#logits
-
-	

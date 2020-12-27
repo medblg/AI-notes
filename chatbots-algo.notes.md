@@ -1,13 +1,13 @@
-Communication : 
+Communication :
 - use slack api or other apis
 https://slack.dev/python-slackclient/
 - use real time messaging:
 https://api.slack.com/rtm
 
 
-======bots=========
+### bots
 Apple’s Siri, Amazon’s Alexa, and Microsoft’s Cortana
-- 2 types: 
+- 2 types:
  - Rule-Based : answers -> pre-determined rules -> trained
  - Self-learning : AI, ML to learn. Natural language processing(https://www.nltk.org/)
    - 2 types:
@@ -15,37 +15,40 @@ Apple’s Siri, Amazon’s Alexa, and Microsoft’s Cortana
     - generative
 
 
-========NLTK========
+### NLTK
 https://www.nltk.org/
 cite: Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.
 
+```
 pip install --user -U nltk
 pip install --user -U numpy
-
+```
 
 - Installing NLTK Data -> datasets, models
 https://www.nltk.org/data.html
- -  python -m nltk.downloader popular
- or 
- - import nltk; nltk.download(‘popular’) --> via interpreter
+ -  `python -m nltk.downloader popular`
+ or
+ - `import nltk; nltk.download('popular')` --> via interpreter
 
 /home/s1m0x/nltk_data
 
 
-- examples:
-# tokenize and tag text
+#### examples:
+- tokenize and tag text
 sentence = """ thank you mohamed, you are awesome """
 tokens = nltk.word_tokenize(sentence)
 tagged = nltk.pos_tag(tokens)
 tagged[0:6]
 
-# identify named entities
+- identify named entities
 entities = nltk.chunk.ne_chunk(tagged)
 
-# display a parse tree
+- display a parse tree
+```
 from nltk.corpus import treebank
 t = treebank.parsed_sents('wsj_0001.mrg')[0]
 t.draw()
+```
 
 https://www.nltk.org/api/nltk.html
 
@@ -54,7 +57,6 @@ https://www.nltk.org/api/nltk.tokenize.html#module-nltk.tokenize
 
 - tokenizer -> divide string into substrings
 
-=========Bots====
 https://towardsdatascience.com/build-your-first-chatbot-using-python-nltk-5d07b027e727
 => hardcoded probable questions and answers
 Goals: ?
@@ -78,23 +80,25 @@ reflections = {
   "my"         : "your"
 }
 ```
-or 
+or
 ```
 my_dummy_reflections= {
     "go"     : "gone",
     "hello"    : "hey there"
 }
 ```
-- use your reflections 
+- use your reflections
 chat = Chat(pairs, my_dummy_reflections)
 
 ex: see chat.py -> /home/s1m0x/Desktop/pfe/Devs/botchat/ntlk/
 
 - nltk.chat chatbots -> regex keywords in questions
 
-======Chatbot with deep learning==============================
+#### Chatbot with deep learning
+
 https://towardsdatascience.com/how-to-create-a-chatbot-with-python-deep-learning-in-less-than-an-hour-56a063bdfc44
 https://github.com/jerrytigerxu/Simple-Python-Chatbot
+
 - Agenda
 Libraries & Data
 Initializing Chatbot Training
@@ -111,40 +115,45 @@ classes.pkl -> diff types of classes of responses
 words.pkl -> diff words for pattern recognition
 intents.json -> js objects, list diff tags corresp diff types of word patterns
 chatbot_model.h5 -> actual model trained by train_chatbot.py
-
 keras -> deep learning framework
---------aside notes----------------------------------
-See technical words:
+
+aside notes: Se technical words:
+---
+
 https://www.datacamp.com/community/tutorials/stemming-lemmatization-python
 
-- Stop words 
+- Stop words
  - do not contain important significance, mostly commonly words, ex as, be, are..
  - are filtered from search queries
 - Stemming:
  - is the process of reducing inflection in words to their root forms
  - mapping a group of words to the same stem(root)
- 
+
 - Lemmatization :
  - reduces the inflected words properly ensuring that the root word belongs to the language
  - root word -> called Lemma -> canonical form of word
   - ex: talks, talking, talked -> lemma : talk
  - nltk -> WordNet Lemmatizer (WordNet db)
+
+```
 from nltk.stem import WordNetLemmatizer
 wordnet_lemmatizer = WordNetLemmatizer()
 wordnet_lemmatizer.lemmatize(word, pos="v") # POS (part-of-speech) tp get root of word
+```
 
 - tokenizer -> separe sentences into words
-word_tokenize(sentence) --> (from nltk.tokenize import sent_tokenize, word_tokenize)
--- tokenize the line -> then stem the word
+word_tokenize(sentence) --> (`from nltk.tokenize import sent_tokenize, word_tokenize`)
+- tokenize the line -> then stem the word
 
  - nltk english stemmers -> PorterStemmer and LancasterStemmer
  -  SnowballStemmers as a language to create to create non-English stemmers
- - ISRIStemmer is an Arabic stemmer 
- 
+ - ISRIStemmer is an Arabic stemmer
+
+```
 from nltk.stem.snowball import SnowballStemmer
 englishStemmer=SnowballStemmer("english")
 englishStemmer.stem("having")
------------------------------------------------
+```
 
 - building the deep learning model:
  - Sequential model -> in keras -> simplest neural network, multilayer perceptron
@@ -152,7 +161,3 @@ https://keras.io/guides/sequential_model/
  - train model with stochastic gradient descent
  - deep learningn frmwrks -->
   - tensorflow, Apache Spark, PyTorch, Sonnet
-
-==============================================
-==============================================
- 
